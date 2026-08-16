@@ -1,0 +1,22 @@
+name: Build Kernel
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-kernel:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Build Kernel
+        uses: dabao1955/kernel_build_action@main
+        with:
+          kernel-url: https://github.com/camellia-devs/kernel_xiaomi_mt6833
+          kernel-branch: main
+          config: camellia_user_defconfig
+          arch: arm64
+          aosp-clang: true
+          android-version: 13
+          anykernel3: true
+          release: true
